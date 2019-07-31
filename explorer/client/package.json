@@ -1,17 +1,24 @@
 {
-  "name": "explorer-client",
+  "name": "@chainlink/explorer-client",
   "private": true,
   "version": "0.0.0",
   "description": "LINK Explorer Client",
   "author": "Chainlink Dev Team",
   "license": "MIT",
   "keywords": [],
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
     "start": "cross-env PORT=3001 craco start",
     "build:clean": "rm -rf build",
@@ -19,31 +26,27 @@
     "lint": "eslint . --color",
     "test": "react-scripts test",
     "test-ci": "CI=true react-scripts test",
-    "test-ci:silent": "yarn test-ci --silent",
-    "autoinstall": "md5sum -c .yarn.lock.md5 || yarn install && md5sum yarn.lock > .yarn.lock.md5"
+    "test-ci:silent": "yarn test-ci --silent"
   },
   "main": "app.js",
   "proxy": "http://localhost:8080",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "@babel/preset-typescript": "^7.3.3",
-    "@craco/craco": "^4.1.0",
-    "@material-ui/core": "^3.9.2",
+    "@craco/craco": "^5.2.0",
+    "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@reach/router": "^1.2.1",
     "@types/classnames": "^2.2.7",
     "@types/enzyme": "^3.9.1",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.11",
-    "@types/material-ui": "^0.21.6",
     "@types/reach__router": "^1.2.3",
-    "@types/react": "^16.8.8",
-    "@types/react-dom": "^16.8.2",
+    "@types/react": "~16.8.0",
+    "@types/react-dom": "~16.8.0",
     "@types/react-hot-loader": "^4.1.0",
-    "@types/react-redux": "^7.0.5",
+    "@types/react-redux": "~7.1.0",
     "@types/react-resize-detector": "^3.1.1",
     "@types/redux-logger": "^3.0.7",
-    "@types/redux-thunk": "^2.1.0",
     "brotli-webpack-plugin": "^1.1.0",
     "change-case": "^3.1.0",
     "classnames": "^2.2.6",
@@ -65,18 +68,26 @@
     "json-api-normalizer": "^0.4.14",
     "module-to-cdn": "^3.1.2",
     "prettier": "^1.16.4",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "~16.8.0",
+    "react-dom": "~16.8.0",
     "react-hot-loader": "^4.8.0",
-    "react-redux": "^6.0.1",
+    "react-redux": "~7.1.0",
     "react-resize-detector": "^4.0.5",
-    "react-scripts": "2.1.8",
-    "react-snapshot": "^1.3.0",
     "react-time-ago": "^5.0.2",
+    "redux": "4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-object": "^0.5.9",
-    "redux-thunk": "^2.3.0",
+    "redux-thunk": "reduxjs/redux-thunk#master",
     "typescript": "^3.5.0"
+  },
+  "devDependencies": {
+    "react-scripts": "3.0.1"
+  },
+  "resolutions": {
+    "caniuse-lite": "1.0.30000957"
+  },
+  "comments": {
+    "resolutions": "Had to lock caniuse-lite version at last working version with browserlists"
   }
 }

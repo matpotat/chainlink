@@ -52,19 +52,31 @@ const styles = ({ spacing, breakpoints }: Theme) =>
     }
   })
 
-interface IProps extends WithStyles<typeof styles> {
+interface IOwnProps {
+  path: string
   jobRunId?: string
+}
+
+interface IStateProps {
   jobRun?: IJobRun
   etherscanHost?: string
-  getJobRun: Function
-  path: string
 }
+
+interface IDispatchProps {
+  getJobRun: any
+}
+
+interface IProps
+  extends WithStyles<typeof styles>,
+    IOwnProps,
+    IStateProps,
+    IDispatchProps {}
 
 const Show = withStyles(styles)(
   ({ jobRunId, jobRun, getJobRun, classes, etherscanHost }: IProps) => {
     useEffect(() => {
       getJobRun(jobRunId)
-    }, [])
+    }, [getJobRun, jobRunId])
 
     return (
       <>
@@ -115,10 +127,6 @@ const etherscanHostSelector = ({ config }: IState) => {
   return config.etherscanHost
 }
 
-interface IOwnProps {
-  jobRunId?: string
-}
-
 const mapStateToProps = (state: IState, { jobRunId }: IOwnProps) => {
   const jobRun = jobRunSelector(state, jobRunId)
   const etherscanHost = etherscanHostSelector(state)
@@ -126,10 +134,10 @@ const mapStateToProps = (state: IState, { jobRunId }: IOwnProps) => {
   return { jobRun, etherscanHost }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators({ getJobRun }, dispatch)
 
-const ConnectedShow = connect(
+const ConnectedShow = connect<IStateProps, IDispatchProps, IOwnProps, IState>(
   mapStateToProps,
   mapDispatchToProps
 )(Show)

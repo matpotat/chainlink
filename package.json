@@ -7,7 +7,9 @@
     "operator_ui",
     "integration",
     "styleguide",
-    "examples/*"
+    "examples/*",
+    "explorer",
+    "explorer/client"
   ],
   "scripts": {
     "lint:fix": "eslint --fix --color --ext .js --ext .jsx --ext .ts --ext .tsx .",

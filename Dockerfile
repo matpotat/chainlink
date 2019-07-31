@@ -17,8 +17,8 @@ RUN make godep
 
 # And yarn likewise
 COPY yarn.lock package.json ./
-COPY explorer/client/yarn.lock explorer/client/package.json ./explorer/client/
-COPY explorer/yarn.lock explorer/package.json ./explorer/
+COPY explorer/client/package.json ./explorer/client/
+COPY explorer/package.json ./explorer/
 COPY operator_ui/package.json ./operator_ui/
 COPY styleguide/package.json ./styleguide/
 RUN make yarndep
