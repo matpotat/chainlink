@@ -13,6 +13,7 @@ require (
 	github.com/btcsuite/btcd v0.0.0-20190115013929-ed77733ec07d // indirect
 	github.com/cespare/cp v1.1.1 // indirect
 	github.com/codegangsta/negroni v1.0.0 // indirect
+	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
 	github.com/deckarep/golang-set v1.7.1 // indirect
 	github.com/ethereum/go-ethereum v1.8.27
 	github.com/fatih/color v1.7.0
